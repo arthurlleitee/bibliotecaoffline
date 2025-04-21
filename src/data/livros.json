@@ -1,0 +1,44 @@
+[
+  {
+    "idLivro": 1,
+    "titulo": "Estruturas de Dados e Algoritmos",
+    "autor": "Nilo Ney Coutinho Menezes",
+    "genero": "Programação",
+    "linkPdf": "https://www.ime.usp.br/~pf/algoritmos/livro.pdf"
+  },
+  {
+    "idLivro": 2,
+    "titulo": "Algoritmos em Linguagem C",
+    "autor": "Paulo Feofiloff",
+    "genero": "C",
+    "linkPdf": "https://www.ime.usp.br/~pina/Algoritmos/algoritmos.pdf"
+  },
+  {
+    "idLivro": 3,
+    "titulo": "Pense em Python",
+    "autor": "Allen B. Downey",
+    "genero": "Python",
+    "linkPdf": "https://penseallen.github.io/PensePython2e/PensePython2e.pdf"
+  },
+  {
+    "idLivro": 4,
+    "titulo": "Introdução à Computação com Python",
+    "autor": "Nilo Ney Coutinho Menezes",
+    "genero": "Python",
+    "linkPdf": "https://www.ime.usp.br/~nemo/py/intro.pdf"
+  },
+  {
+    "idLivro": 5,
+    "titulo": "Redes de Computadores",
+    "autor": "Instituto Federal do Paraná (IFPR)",
+    "genero": "Redes",
+    "linkPdf": "https://ead.ifpr.edu.br/pluginfile.php/108126/mod_resource/content/1/Redes%20de%20Computadores.pdf"
+  },
+  {
+    "idLivro": 6,
+    "titulo": "Arquitetura de Computadores",
+    "autor": "Instituto Federal do Paraná (IFPR)",
+    "genero": "Arquitetura",
+    "linkPdf": "https://ead.ifpr.edu.br/pluginfile.php/108125/mod_resource/content/1/Arquitetura%20de%20Computadores.pdf"
+  }
+]
