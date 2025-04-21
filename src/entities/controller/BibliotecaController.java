@@ -4,12 +4,18 @@ import entities.models.Usuario;
 import services.BibliotecaService;
 
 import java.util.Scanner;
+import utils.ValidarUsuario;
+
+import static utils.ValidarUsuario.emailValido;
+import static utils.ValidarUsuario.senhaForte;
 
 public class BibliotecaController {
 
     private final Scanner scanner = new Scanner(System.in);
     private final BibliotecaService service = new BibliotecaService();
     private Usuario usuarioLogado;
+
+
 
     public void iniciar() {
         int opcao;
@@ -51,16 +57,54 @@ public class BibliotecaController {
     }
 
     private void cadastrarUsuario() {
-        System.out.print("Nome: ");
-        String nome = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
-        System.out.print("Senha: ");
-        String senha = scanner.nextLine();
+
+        String nome;
+        do {
+            System.out.print("Nome: ");
+            nome = scanner.nextLine().trim();
+            if (nome.isEmpty()) {
+                System.out.println("O nome não pode estar em branco.");
+            }
+        } while (nome.isEmpty());
+
+        String email;
+        do {
+            System.out.print("Email: ");
+            email = scanner.nextLine().trim();
+
+            if (!emailValido(email)) {
+                System.out.println("Email inválido. Aceitamos apenas Gmail, Outlook ou Hotmail.");
+            }
+        } while (!emailValido(email));
+
+        String senha;
+        String confirmarSenha = "";
+        do {
+            System.out.print("Senha: ");
+            senha = scanner.nextLine().trim();
+
+            if (!senhaForte(senha)) {
+                System.out.println("Senha fraca. Ela deve conter:");
+                System.out.println("- Pelo menos 1 letra maiúscula");
+                System.out.println("- Pelo menos 1 letra minúscula");
+                System.out.println("- Pelo menos 1 número");
+                System.out.println("- Pelo menos 1 símbolo (@#$%^&+=!)");
+                System.out.println("- Mínimo de 8 caracteres");
+                continue;
+            }
+
+            System.out.print("Confirme a senha: ");
+            confirmarSenha = scanner.nextLine().trim();
+
+            if (!senha.equals(confirmarSenha)) {
+                System.out.println("As senhas não coincidem. Tente novamente.");
+            }
+
+        } while (!senhaForte(senha) || !senha.equals(confirmarSenha));
 
 
         int novoId = service.gerarNovoIdUsuario();
-        Usuario usuario = new entities.models.Usuario(novoId, nome, email, senha);
+        Usuario usuario = new Usuario(novoId, nome, email, senha);
         service.cadastrarUsuario(usuario);
         System.out.println("Usuário cadastrado com sucesso!");
     }
