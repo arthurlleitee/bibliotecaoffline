@@ -1,29 +1,22 @@
 package entities.models;
 
-import java.time.LocalDateTime;
+
 
 public class Usuario {
     private int idUsuario;
     private String nome;
     private String email;
     private String senha;
-    private LocalDateTime dataNascimento;
 
-    public Usuario(LocalDateTime dataNascimento, String email, int idUsuario, String nome, String senha) {
-        this.dataNascimento = dataNascimento;
-        this.email = email;
+
+    public Usuario(int idUsuario, String nome, String email ,String senha) {
         this.idUsuario = idUsuario;
         this.nome = nome;
+        this.email = email;
         this.senha = senha;
     }
 
-    public LocalDateTime getDataNascimento() {
-        return dataNascimento;
-    }
 
-    public void setDataNascimento(LocalDateTime dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
 
     public String getEmail() {
         return email;
@@ -63,7 +56,6 @@ public class Usuario {
                 "ID = " + idUsuario +
                 ", Nome = '" + nome + '\'' +
                 ", Email = '" + email + '\'' +
-                ", Data de Nascimento = " + dataNascimento +
                 '}';
     }
 }

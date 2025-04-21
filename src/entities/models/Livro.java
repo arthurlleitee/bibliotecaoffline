@@ -7,6 +7,10 @@ public class Livro {
     private String genero;
     private String linkPdf;
 
+    public Livro() {
+        // Construtor vazio para o Gson
+    }
+
     public Livro(int idLivro, String titulo, String autor, String genero, String linkPdf) {
         this.idLivro = idLivro;
         this.titulo = titulo;
@@ -15,54 +19,27 @@ public class Livro {
         this.linkPdf = linkPdf;
     }
 
-    public int getIdLivro() {
-        return idLivro;
-    }
+    // Getters e setters
+    public int getIdLivro() { return idLivro; }
+    public void setIdLivro(int idLivro) { this.idLivro = idLivro; }
 
-    public void setIdLivro(int idLivro) {
-        this.idLivro = idLivro;
-    }
+    public String getTitulo() { return titulo; }
+    public void setTitulo(String titulo) { this.titulo = titulo; }
 
-    public String getTitulo() {
-        return titulo;
-    }
+    public String getAutor() { return autor; }
+    public void setAutor(String autor) { this.autor = autor; }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
-    public String getLinkPdf() {
-        return linkPdf;
-    }
-
-    public void setLinkPdf(String linkPdf) {
-        this.linkPdf = linkPdf;
-    }
+    public String getGenero() { return genero; }
+    public void setGenero(String genero) { this.genero = genero; }
 
     @Override
     public String toString() {
-        return "\n---------------------------\n" +
-                "ID: " + idLivro +
-                "\nTítulo: " + titulo +
-                "\nAutor: " + autor +
-                "\nGênero: " + genero +
-                "\nPDF: " + linkPdf +
-                "\n---------------------------";
+        return "Livro{" +
+                "idLivro=" + idLivro +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", genero='" + genero + '\'' +
+                ", linkPdf='" + linkPdf + '\'' +
+                '}';
     }
 }

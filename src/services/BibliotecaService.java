@@ -1,21 +1,25 @@
 package services;
 
-import entities.models.Livro;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.Gson;
 import entities.models.Usuario;
+import entities.models.Livro;
 import utils.ArquivosUtils;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.lang.reflect.Type;
+import java.util.*;
 
 public class BibliotecaService {
-
-    private List<Livro> livros = new ArrayList<>();
-    private List<Usuario> usuarios = new ArrayList<>();
-    private final String caminhoArquivoLivros = "data/livros.json";
+    private List<Livro> livros;
+    private List<Usuario> usuarios;
+    private final String caminhoLivros = "data/livros.json";
+    private final String caminhoUsuarios = "data/usuarios.json";
 
     public BibliotecaService() {
-        this.livros = ArquivosUtils.carregarLivrosDeArquivo(caminhoArquivoLivros);
+        this.livros = Optional.ofNullable(ArquivosUtils.carregarLivrosDeArquivo(caminhoLivros)).orElse(new ArrayList<>());
+        this.usuarios = Optional.ofNullable(ArquivosUtils.carregarUsuariosDeArquivo(caminhoUsuarios)).orElse(new ArrayList<>());
     }
 
     public List<Livro> listarLivros() {
@@ -25,39 +29,19 @@ public class BibliotecaService {
     public List<Livro> buscarLivroPorTitulo(String titulo) {
         return livros.stream()
                 .filter(l -> l.getTitulo().toLowerCase().contains(titulo.toLowerCase()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<Livro> buscarLivroPorAutor(String autor) {
         return livros.stream()
                 .filter(l -> l.getAutor().toLowerCase().contains(autor.toLowerCase()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     public List<Livro> buscarLivroPorGenero(String genero) {
         return livros.stream()
                 .filter(l -> l.getGenero().toLowerCase().contains(genero.toLowerCase()))
-                .collect(Collectors.toList());
-    }
-
-    public Livro buscarLivroPorId(int id) {
-        return livros.stream()
-                .filter(l -> l.getIdLivro() == id)
-                .findFirst()
-                .orElse(null);
-    }
-
-    public void adicionarLivro(Livro novoLivro) {
-        livros.add(novoLivro);
-        ArquivosUtils.salvarLivrosNoArquivo(livros, caminhoArquivoLivros);
-    }
-
-    public void cadastrarUsuario(Usuario usuario) {
-        usuarios.add(usuario);
-    }
-
-    public List<Usuario> listarUsuarios() {
-        return usuarios;
+                .toList();
     }
 
     public Usuario verificarLogin(String email, String senha) {
@@ -66,9 +50,20 @@ public class BibliotecaService {
                 .findFirst()
                 .orElse(null);
     }
+
+    public void cadastrarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
+        ArquivosUtils.salvarUsuariosNoArquivo(usuarios, caminhoUsuarios);
+    }
+
+    public int gerarNovoIdUsuario() {
+        return usuarios.stream()
+                .mapToInt(Usuario::getIdUsuario)
+                .max()
+                .orElse(0) + 1;
+    }
+
+    public List<Usuario> listarUsuarios() {
+        return usuarios;
+    }
 }
-
-
-
-
-
