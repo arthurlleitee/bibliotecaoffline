@@ -62,4 +62,16 @@ public class BibliotecaService {
     public List<Usuario> listarUsuarios() {
         return usuarios;
     }
+
+    public boolean emailJaCadastrado(String email) {
+        return usuarios.stream()
+                .anyMatch(u -> u.getEmail().equalsIgnoreCase(email));
+    }
+
+    public void adicionarLivro(Livro livro) {
+        livros.add(livro);
+        ArquivosUtils.salvarLivrosNoArquivo(livros, caminhoLivros);
+    }
+
+
 }

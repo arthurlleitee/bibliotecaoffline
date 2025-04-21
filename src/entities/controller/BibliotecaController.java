@@ -4,7 +4,7 @@ import entities.models.Usuario;
 import services.BibliotecaService;
 
 import java.util.Scanner;
-import utils.ValidarUsuario;
+
 
 import static utils.ValidarUsuario.emailValido;
 import static utils.ValidarUsuario.senhaForte;
@@ -14,6 +14,8 @@ public class BibliotecaController {
     private final Scanner scanner = new Scanner(System.in);
     private final BibliotecaService service = new BibliotecaService();
     private Usuario usuarioLogado;
+    private final String emailGerente = "gerente@biblioteca.com";
+    private final String senhaGerente = "Admin@123";
 
 
 
@@ -23,6 +25,7 @@ public class BibliotecaController {
             System.out.println("====== BEM-VINDO À BIBLIOTECA OFFLINE ======");
             System.out.println("1 - Fazer login");
             System.out.println("2 - Cadastrar usuário");
+            System.out.println("3 - Entrar como gerente");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -31,13 +34,14 @@ public class BibliotecaController {
             switch (opcao) {
                 case 1 -> login();
                 case 2 -> cadastrarUsuario();
+                case 3 -> acessarComoGerente();
                 case 0 -> System.out.println("Encerrando...");
                 default -> System.out.println("Opção inválida.");
             }
         } while (usuarioLogado == null && opcao != 0);
 
         if (usuarioLogado != null) {
-            exibirMenuPrincipal();
+            new MenuUsuario(service, usuarioLogado).exibirMenu();
         }
     }
 
@@ -55,6 +59,20 @@ public class BibliotecaController {
             System.out.println("Email ou senha incorretos.");
         }
     }
+
+    private void acessarComoGerente() {
+        System.out.print("Email do gerente: ");
+        String email = scanner.nextLine();
+        System.out.print("Senha: ");
+        String senha = scanner.nextLine();
+
+        if (email.equals("gerente@biblioteca.com") && senha.equals("Admin@123")) {
+            new MenuGerente(service).exibirMenu();
+        } else {
+            System.out.println("Credenciais de gerente inválidas.");
+        }
+    }
+
 
     private void cadastrarUsuario() {
 
@@ -75,6 +93,12 @@ public class BibliotecaController {
             if (!emailValido(email)) {
                 System.out.println("Email inválido. Aceitamos apenas Gmail, Outlook ou Hotmail.");
             }
+
+            if (service.emailJaCadastrado(email)) {
+                System.out.println("Este email já está cadastrado. Tente outro.");
+                email = ""; // força repetição do loop
+            }
+
         } while (!emailValido(email));
 
         String senha;
@@ -109,39 +133,6 @@ public class BibliotecaController {
         System.out.println("Usuário cadastrado com sucesso!");
     }
 
-    private void exibirMenuPrincipal() {
-        int opcao;
-        do {
-            System.out.println("\n=== MENU PRINCIPAL ===");
-            System.out.println("1 - Listar todos os livros");
-            System.out.println("2 - Buscar livro por título");
-            System.out.println("3 - Buscar livro por autor");
-            System.out.println("4 - Buscar livro por gênero");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (opcao) {
-                case 1 -> service.listarLivros().forEach(System.out::println);
-                case 2 -> buscar("título");
-                case 3 -> buscar("autor");
-                case 4 -> buscar("gênero");
-                case 0 -> System.out.println("Logout realizado.");
-                default -> System.out.println("Opção inválida.");
-            }
-        } while (opcao != 0);
-    }
-
-    private void buscar(String tipo) {
-        System.out.print("Digite o " + tipo + ": ");
-        String termo = scanner.nextLine();
-        switch (tipo) {
-            case "título" -> service.buscarLivroPorTitulo(termo).forEach(System.out::println);
-            case "autor" -> service.buscarLivroPorAutor(termo).forEach(System.out::println);
-            case "gênero" -> service.buscarLivroPorGenero(termo).forEach(System.out::println);
-        }
-    }
 }
 
 

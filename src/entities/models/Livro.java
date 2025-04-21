@@ -34,12 +34,9 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Livro{" +
-                "idLivro=" + idLivro +
-                ", titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", genero='" + genero + '\'' +
-                ", linkPdf='" + linkPdf + '\'' +
-                '}';
+        return String.format(
+                "ID: %d | Título: %s | Autor: %s | Gênero: %s%nLink: %s%n",
+                idLivro, titulo, autor, genero, linkPdf
+        );
     }
 }
