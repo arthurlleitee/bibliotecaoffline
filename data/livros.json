@@ -1,44 +1,142 @@
 [
   {
     "idLivro": 1,
-    "titulo": "Estruturas de Dados e Algoritmos",
-    "autor": "Nilo Ney Coutinho Menezes",
-    "genero": "Programação",
-    "linkPdf": "https://www.ime.usp.br/~pf/algoritmos/livro.pdf"
+    "titulo": "Algoritmos em Linguagem C",
+    "autor": "Paulo Feofiloff",
+    "genero": "Algoritmos",
+    "linkPdf": "https://www.ime.usp.br/~pf/algoritmos-livro/downloads/Algoritmos-em-linguagem-C.pdf"
   },
   {
     "idLivro": 2,
-    "titulo": "Algoritmos em Linguagem C",
+    "titulo": "Algoritmos de Programação Linear",
     "autor": "Paulo Feofiloff",
-    "genero": "C",
-    "linkPdf": "https://www.ime.usp.br/~pina/Algoritmos/algoritmos.pdf"
+    "genero": "Programação Linear",
+    "linkPdf": "https://www.ime.usp.br/~pf/prog-lin/book-public.pdf"
   },
   {
     "idLivro": 3,
-    "titulo": "Pense em Python",
-    "autor": "Allen B. Downey",
-    "genero": "Python",
-    "linkPdf": "https://penseallen.github.io/PensePython2e/PensePython2e.pdf"
+    "titulo": "Linguagem C++",
+    "autor": "Silvio do Lago Pereira",
+    "genero": "C++",
+    "linkPdf": "https://www.ime.usp.br/~slago/slago-C%2B%2B.pdf"
   },
   {
     "idLivro": 4,
-    "titulo": "Introdução à Computação com Python",
-    "autor": "Nilo Ney Coutinho Menezes",
-    "genero": "Python",
-    "linkPdf": "https://www.ime.usp.br/~nemo/py/intro.pdf"
+    "titulo": "Introdução à Ciência da Computação com Java e Orientação a Objetos",
+    "autor": "IME-USP",
+    "genero": "Java",
+    "linkPdf": "https://ccsl.ime.usp.br/files/publications/files/2008/intro-java-cc.pdf"
   },
   {
     "idLivro": 5,
-    "titulo": "Redes de Computadores",
-    "autor": "Instituto Federal do Paraná (IFPR)",
-    "genero": "Redes",
-    "linkPdf": "https://ead.ifpr.edu.br/pluginfile.php/108126/mod_resource/content/1/Redes%20de%20Computadores.pdf"
+    "titulo": "Análise de Algoritmos e de Estruturas de Dados",
+    "autor": "IME-USP",
+    "genero": "Algoritmos",
+    "linkPdf": "https://www.ime.usp.br/~mota/bookFiles/livro_AAED.pdf"
   },
   {
     "idLivro": 6,
-    "titulo": "Arquitetura de Computadores",
-    "autor": "Instituto Federal do Paraná (IFPR)",
-    "genero": "Arquitetura",
-    "linkPdf": "https://ead.ifpr.edu.br/pluginfile.php/108125/mod_resource/content/1/Arquitetura%20de%20Computadores.pdf"
+    "titulo": "Exercícios Resolvidos - Introdução à Programação com Python (4ª Edição)",
+    "autor": "Nilo Ney Coutinho Menezes",
+    "genero": "Python",
+    "linkPdf": "https://python.nilo.pro.br/exercicios_resolvidos4_241123.pdf"
+  },
+  {
+    "idLivro": 7,
+    "titulo": "Java como Programar – 10ª Edição",
+    "autor": "Paul Deitel, Harvey Deitel",
+    "genero": "Java",
+    "linkPdf": "https://ia601403.us.archive.org/32/items/deitel-java-como-programar-6a-edicao-br-completo/Paul%20Deitel%2C%20Harvey%20Deitel%20-%20Java%20como%20Programar%20-%2010%C2%B0%20Edi%C3%A7%C3%A3o.pdf"
+  },
+  {
+    "idLivro": 8,
+    "titulo": "Programação de Computadores em C",
+    "autor": "Renato Cardoso Mesquita",
+    "genero": "C",
+    "linkPdf": "https://homepages.dcc.ufmg.br/~camarao/ipcc/anolan/livro.pdf"
+  },
+  {
+    "idLivro": 9,
+    "titulo": "Programação Orientada a Objetos em C++",
+    "autor": "IME-USP",
+    "genero": "C++",
+    "linkPdf": "https://www.ime.usp.br/~slago/slago-C%2B%2B.pdf"
+  },
+  {
+    "idLivro": 10,
+    "titulo": "Introdução à Ciência da Computação com Java",
+    "autor": "Alfredo Goldman, Fabio Kon, Paulo J. S. Silva",
+    "genero": "Java",
+    "linkPdf": "https://ccsl.ime.usp.br/files/publications/files/2008/intro-java-cc.pdf"
+  },
+  {
+    "idLivro": 11,
+    "titulo": "Introdução à Programação com Python",
+    "autor": "IFRN",
+    "genero": "Python",
+    "linkPdf": "https://memoria.ifrn.edu.br/bitstream/handle/1044/2090/EBOOK%20-%20INTRODU%C3%87%C3%83O%20A%20PYTHON%20%28EDITORA%20IFRN%29.pdf?isAllowed=y&sequence=1"
+  },
+  {
+    "idLivro": 12,
+    "titulo": "Thinking in Java",
+    "autor": "Bruce Eckel",
+    "genero": "Java",
+    "linkPdf": "https://archive.org/details/ThinkingInJava4thEdition"
+  },
+  {
+    "idLivro": 13,
+    "titulo": "Thinking in C++ Vol. 1",
+    "autor": "Bruce Eckel",
+    "genero": "C++",
+    "linkPdf": "https://archive.org/details/ThinkingInC++Vol.1"
+  },
+  {
+    "idLivro": 14,
+    "titulo": "Thinking in C++ Vol. 2",
+    "autor": "Bruce Eckel",
+    "genero": "C++",
+    "linkPdf": "https://archive.org/details/ThinkingInC++Vol.2"
+  },
+  {
+    "idLivro": 15,
+    "titulo": "Data Science do Zero",
+    "autor": "Joel Grus",
+    "genero": "Ciência de Dados",
+    "linkPdf": "https://github.com/free-educa/free-livros/blob/main/Data%20Science%20do%20zero_%20Primeiras%20-%20Joel%20Grus.pdf"
+  },
+  {
+    "idLivro": 16,
+    "titulo": "C++ Succinctly",
+    "autor": "Syncfusion",
+    "genero": "C++",
+    "linkPdf": "https://codersguild.net/books"
+  },
+  {
+    "idLivro": 17,
+    "titulo": "Java 17 Backend Development",
+    "autor": "Elara Drevyn",
+    "genero": "Java",
+    "linkPdf": "https://codersguild.net/books"
+  },
+  {
+    "idLivro": 18,
+    "titulo": "Security Automation with Python",
+    "autor": "Corey Charles",
+    "genero": "Python",
+    "linkPdf": "https://codersguild.net/books"
+  },
+  {
+    "idLivro": 19,
+    "titulo": "Hands-On Machine Learning with C++",
+    "autor": "Kirill Koladiazhnyi",
+    "genero": "C++",
+    "linkPdf": "https://codersguild.net/books"
+  },
+  {
+    "idLivro": 20,
+    "titulo": "C++ Notes for Professionals",
+    "autor": "StackOverflow Contributors",
+    "genero": "C++",
+    "linkPdf": "https://goalkicker.com/CPlusPlusBook/"
   }
 ]
