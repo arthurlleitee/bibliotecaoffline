@@ -1,8 +1,11 @@
 package entities.controller;
 
 import entities.models.Usuario;
+import exceptions.CredenciaisInvalidasException;
+import exceptions.EmailDuplicadoException;
 import services.BibliotecaService;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
@@ -20,7 +23,7 @@ public class BibliotecaController {
 
 
     public void iniciar() {
-        int opcao;
+        int opcao = 0;
         do {
             System.out.println("====== BEM-VINDO À BIBLIOTECA OFFLINE ======");
             System.out.println("1 - Fazer login");
@@ -28,8 +31,14 @@ public class BibliotecaController {
             System.out.println("3 - Entrar como gerente");
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opção: ");
-            opcao = scanner.nextInt();
-            scanner.nextLine();
+
+            try {
+                opcao = scanner.nextInt();
+                scanner.nextLine();
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, digite um número válido.");
+                scanner.nextLine(); // limpa o buffer
+            }
 
             switch (opcao) {
                 case 1 -> login();
@@ -51,13 +60,16 @@ public class BibliotecaController {
         System.out.print("Senha: ");
         String senha = scanner.nextLine();
 
-        Usuario usuario = service.verificarLogin(email, senha);
-        if (usuario != null) {
+        try{
+            Usuario usuario = service.verificarLogin(email, senha);
             usuarioLogado = usuario;
             System.out.println("Login realizado com sucesso. Bem-vindo(a), " + usuario.getNome() + "!");
-        } else {
-            System.out.println("Email ou senha incorretos.");
+
+        } catch (CredenciaisInvalidasException e) {
+            System.out.println(e.getMessage());
         }
+
+
     }
 
     private void acessarComoGerente() {
@@ -94,8 +106,12 @@ public class BibliotecaController {
                 System.out.println("Email inválido. Aceitamos apenas Gmail, Outlook ou Hotmail.");
             }
 
-            if (service.emailJaCadastrado(email)) {
-                System.out.println("Este email já está cadastrado. Tente outro.");
+            try {
+                if (service.emailJaCadastrado(email)) {
+                    throw new EmailDuplicadoException("Este email já está cadastrado. Tente outro.");
+                }
+            } catch (EmailDuplicadoException e) {
+                System.out.println(e.getMessage());
                 email = ""; // força repetição do loop
             }
 

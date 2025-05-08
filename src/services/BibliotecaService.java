@@ -2,6 +2,7 @@ package services;
 
 import entities.models.Usuario;
 import entities.models.Livro;
+import exceptions.CredenciaisInvalidasException;
 import utils.ArquivosUtils;
 
 
@@ -44,7 +45,7 @@ public class BibliotecaService {
         return usuarios.stream()
                 .filter(u -> u.getEmail().equalsIgnoreCase(email) && u.getSenha().equals(senha))
                 .findFirst()
-                .orElse(null);
+                .orElseThrow(() -> new CredenciaisInvalidasException("Email ou senha incorretos."));
     }
 
     public void cadastrarUsuario(Usuario usuario) {
